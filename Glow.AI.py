@@ -1,5 +1,6 @@
 import streamlit as st
-from google import genai
+import google.generativeai as genai
+
 
 # ضبط عنوان الصفحة والدعم للغة العربية
 st.set_page_config(page_title="Glow AI", page_icon="🤖")
@@ -16,9 +17,11 @@ st.markdown("""
 st.title("🤖 Glow AI")
 
 # ضع مفتاح الـ API الجديد هنا
-API_KEY = "AQ.Ab8RN6Lt-9JFJBnJOsKtPuN2zOXEtU9R70AtfQ4gcLiPhmiDBg"
 
-client = genai.Client(api_key=API_KEY)
+API_KEY = "AQ.Ab8RN6Lt-9JFJBnJ0sKtPuN2zOXEtU9R70AtfQ..."
+
+genai.configure(api_key=API_KEY)
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 # إدارة سجل الشات
 if "messages" not in st.session_state:
