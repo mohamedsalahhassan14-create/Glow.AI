@@ -40,7 +40,7 @@ if user_input := st.chat_input("اكتب سؤالك هنا..."):
 
     with st.chat_message("assistant"):
         try:
-            response = client.models.generate_content(
+            response = model.generate_content(
                 model="gemini-3.8-flash",
                 contents=user_input,
                 #config={"tools": [{"google_search": {}}]}
