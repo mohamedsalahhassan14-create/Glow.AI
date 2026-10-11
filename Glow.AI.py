@@ -40,11 +40,9 @@ if user_input := st.chat_input("اكتب سؤالك هنا..."):
 
     with st.chat_message("assistant"):
         try:
-            response = model.generate_content(
-                model="gemini-3.8-flash",
-                contents=user_input,
-                #config={"tools": [{"google_search": {}}]}
-            )
+            response = model.generate_content(prompt)
+               
+                #config={"tools": [{"google_search": {}}]})
             reply = response.text
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
