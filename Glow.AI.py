@@ -16,12 +16,12 @@ st.markdown("""
 
 st.title("🤖 Glow AI")
 
-# مفتاح الـ API الخاص بك
-API_KEY = "AQ.Ab8RN6Lt-9JFJBnJ0sKtPuN2zOXEtU9R70AtfQ..."
+# مفتاح الـ API الخاص بك الذي يبدأ بـ AQ
+API_KEY = "AQ.Ab8RN6L3R5xHcbJi9G5EJ12wdiwWip7fTi0sDrUvQ9bxajJm0w"
 
-# دالة إرسال الطلب مباشرة لسيرفرات جوجل (لتجنب مشاكل 401 و OAuth)
 def call_gemini_api(prompt_text):
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+    # رابط الـ API المباشر لدعم توكنات OAuth / Cloud Console
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
     
     headers = {
         "Authorization": f"Bearer {API_KEY}",
@@ -35,14 +35,16 @@ def call_gemini_api(prompt_text):
     }
     
     try:
-        response = requests.post(url, headers=headers, data=json.dumps(data))
+        response = requests.post(url, headers=headers, json=data)
+        
         if response.status_code == 200:
             res_json = response.json()
             return res_json["candidates"][0]["content"]["parts"][0]["text"]
         else:
-            return f"حدث خطأ في الاتصال (كود الخادم: {response.status_code})"
+            # طباعة تفاصيل الخطأ الدقيقة لو حصلت مشكلة في التوكن
+            return f"خطأ من جوجل ({response.status_code}): {response.text}"
     except Exception as e:
-        return f"حدث خطأ: {e}"
+        return f"حدث خطأ أثناء الاتصال: {e}"
 
 # إدارة سجل الشات
 if "messages" not in st.session_state:
