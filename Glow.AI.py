@@ -17,7 +17,7 @@ st.markdown("""
 st.title("🤖 Glow AI")
 
 # مفتاح الـ API الخاص بك الذي يبدأ بـ AQ
-API_KEY = "AQ.Ab8RN6L3R5xHcbJi9G5EJ12wdiwWip7fTi0sDrUvQ9bxajJm0w"
+API_KEY = "AQ.Ab8RN6LYM3x7qk3azO8vkasMsVb7zlpS8LmUaq1B33y7AMfdUw"
 
 def call_gemini_api(prompt_text):
     # رابط الـ API المباشر لدعم توكنات OAuth / Cloud Console
