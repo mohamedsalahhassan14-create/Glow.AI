@@ -16,7 +16,7 @@ st.markdown("""
 st.title("🤖 Glow AI")
 
 # ضع مفتاح الـ API الجديد هنا
-API_KEY = "AQ.Ab8RN6LOIwDfJUR8vsl2BGUobeHHBS8kHbYGjciJmVp6gQIIMg"
+API_KEY = "AQ.Ab8RN6Lt-9JFJBnJOsKtPuN2zOXEtU9R70AtfQ4gcLiPhmiDBg"
 
 client = genai.Client(api_key=API_KEY)
 
@@ -47,5 +47,3 @@ if user_input := st.chat_input("اكتب سؤالك هنا..."):
             st.session_state.messages.append({"role": "assistant", "content": reply})
         except Exception as e:
             st.error(f"حدث خطأ: {e}")
-
-
